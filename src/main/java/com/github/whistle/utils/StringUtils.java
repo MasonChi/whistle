@@ -197,12 +197,16 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             return result;
         }
 
-        Set<?> keys = map.keySet();
-        for (Object key : keys) {
-            result += (key + "=" + map.get(key) + "&");
+        StringBuilder param = new StringBuilder();
+        for (Map.Entry<?, ?> entry : map.entrySet()) {
+            if (param.length() > 0) {
+                param.append("&");
+            }
+            param.append(entry.getKey());
+            param.append("=");
+            param.append(entry.getValue());
         }
-
-        return isBlank(result) ? result : result.substring(0, result.length() - 1);
+        return param.toString();
     }
 
     /**
