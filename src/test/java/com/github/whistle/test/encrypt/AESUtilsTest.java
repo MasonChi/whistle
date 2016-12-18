@@ -1,6 +1,7 @@
 package com.github.whistle.test.encrypt;
 
 import com.github.whistle.encrypt.AESUtils;
+import org.junit.Test;
 
 /**
  * Created by child.
@@ -9,7 +10,8 @@ import com.github.whistle.encrypt.AESUtils;
  */
 public class AESUtilsTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         try {
             String content = "helloworld";
             String password = "1234567891234567";
