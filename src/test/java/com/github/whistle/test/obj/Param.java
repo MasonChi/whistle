@@ -7,7 +7,7 @@ package com.github.whistle.test.obj;
  */
 public class Param {
 
-    public static final String URL = "http://activities.mizlicai.com";
+    public static final String URL = "localhost";
     public static final String GET_URI = "currentTime.json";
     public static final String POST_URI = "isRegister.json";
 }
