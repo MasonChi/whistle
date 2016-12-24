@@ -14,6 +14,17 @@ import java.util.Date;
 public class DateUtilsTest {
 
     @Test
+    public void mis() {
+        System.out.println(DateUtils.NOW_DATE_MIS);
+    }
+
+    @Test
+    public void date2Mis() {
+        System.out.println(DateUtils.NOW_DATE_MIS);
+        System.out.println(DateUtils.str2DateTimeMis(DateUtils.date2DateStr(new Date())));
+    }
+
+    @Test
     public void getQuarter() {
         System.out.println(DateUtils.getQuarter(1));
         System.out.println(DateUtils.getQuarter(2));

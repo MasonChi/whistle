@@ -30,7 +30,7 @@ public class DateUtils {
      * @return 毫秒值
      */
     public static long str2DateTimeMis(String strDate) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         try {
             date = df.parse(strDate);
