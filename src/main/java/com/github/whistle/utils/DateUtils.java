@@ -4,6 +4,7 @@ import com.github.whistle.utils.enums.DateLang;
 import com.github.whistle.utils.enums.Portion;
 import com.github.whistle.utils.enums.TimeIntervalUnit;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,6 +39,17 @@ public class DateUtils {
             pe.getStackTrace();
         }
         return date.getTime();
+    }
+
+    /**
+     * 把一个毫秒值(1970年1月1日开始)转化为字符串时间
+     *
+     * @param mis 毫秒值
+     * @return 字符串时间:yyyy-MM-dd HH:mm:ss
+     */
+    public static String mis2Str(long mis) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(new Date(mis));
     }
 
     /**
