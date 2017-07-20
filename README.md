@@ -16,8 +16,8 @@ Whistle can relax our mood, tools can help us to more simple development.
 - BigDecimalUtils
 
 ### List of java http request tools:
-- HttpConnUtils (This tool class is based on the java.net.HttpURLConnection implementation)
-- HttpUtils (This tool class is based on the org.apache.http.client.HttpClient implementation)
+- HttpRequestUtils (This tool class is based on the java.net.HttpURLConnection implementation)
+- HttpClientUtils (This tool class is based on the org.apache.http.client.HttpClient implementation)
 
 ### List of java encrypt tools:
 - MD5Utils

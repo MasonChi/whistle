@@ -1,7 +1,7 @@
 package com.github.whistle.test.utils;
 
 import com.github.whistle.test.obj.Param;
-import com.github.whistle.utils.HttpConnUtils;
+import com.github.whistle.utils.HttpRequestUtils;
 import org.junit.Test;
 
 /**
@@ -13,7 +13,14 @@ public class HttpConnectionUtilsTest {
 
     @Test
     public void sendGet() {
-        String result = HttpConnUtils.sendGet(Param.URL + "/" + Param.GET_URI, null, "UTF-8");
+        String result = HttpRequestUtils.sendGet(Param.URL + "/" + Param.GET_URI, null, "UTF-8");
+        System.out.println(result);
+    }
+
+    @Test
+    public void sendPost() {
+
+        String result = HttpRequestUtils.sendGet(Param.URL + "/" + Param.GET_URI, null, "UTF-8");
         System.out.println(result);
     }
 }

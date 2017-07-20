@@ -20,7 +20,7 @@ import java.io.StringWriter;
  * Date: 2016/12/14.
  * Description: http请求工具类
  */
-public class HttpUtils {
+public class HttpClientUtils {
 
     // 编码
     public static final String CHARSET = "UTF-8";

@@ -6,9 +6,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,7 +18,7 @@ import java.util.Map;
  * Date: 2016/12/18.
  * Description:
  */
-public class HttpConnUtils {
+public class HttpRequestUtils {
 
     /**
      * 向指定URL发送GET请求
@@ -55,7 +57,7 @@ public class HttpConnUtils {
                             ? charEncoding : CharEncoding.UTF_8));
             StringBuilder line = new StringBuilder();
             char[] cbuf = new char[1024];
-            int len = 0;
+            int len;
             while ((len = in.read(cbuf)) != -1) {
                 line.append(cbuf, 0, len);
             }
@@ -74,6 +76,48 @@ public class HttpConnUtils {
             }
         }
         return result;
+    }
+
+    /**
+     * 向指定URL发送POST请求
+     *
+     * @param url    发送请求的 URL
+     * @param object 请求的参数
+     * @return 远程资源的响应结果
+     */
+    @SuppressWarnings("unused")
+    public static String sendPost(String url, Object object) {
+        Map<String, Object> params = HttpRequestUtils.convertObjToMap(object);
+        return sendPost(url, params);
+    }
+
+    /**
+     * 将对象转化为map
+     *
+     * @param obj 对象
+     * @return Map
+     */
+    @SuppressWarnings("unchecked")
+    private static Map<String, Object> convertObjToMap(Object obj) {
+        Map<String, Object> reMap = new HashMap<>();
+        if (obj == null)
+            return null;
+        Field[] fields = obj.getClass().getDeclaredFields();
+        try {
+            for (Field field : fields) {
+                try {
+                    Field f = obj.getClass().getDeclaredField(field.getName());
+                    f.setAccessible(true);
+                    Object o = f.get(obj);
+                    reMap.put(field.getName(), o);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        return reMap;
     }
 
     /**
